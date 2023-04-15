@@ -59,8 +59,6 @@ class Calculator {
         this.currentNumber = ""
         if (this.lastInput && this.lastInput.type === ActionType.operator) {
             this.inputs[this.lastInputIndex] = operatorAciton
-
-            this.currentOprtator = operatorAciton
             return
         }
 
@@ -112,9 +110,8 @@ class Calculator {
 
     clearLastInput = () => {
         this.inputs.pop()
-        this.currentNumber = this.currentNumber.split("")
-        this.currentNumber.pop()
-        this.currentNumber = this.currentNumber.join("")
+
+        this.currentNumber = this.currentNumber.slice(0, -1)
 
         this.screen.show(this.currentNumber)
     }
